@@ -107,7 +107,7 @@ class Wappalyzer:
             # Get the lastest file
             if should_update:
                 try:
-                    lastest_technologies_file=requests.get('https://raw.githubusercontent.com/AliasIO/wappalyzer/master/src/technologies.json')
+                    lastest_technologies_file=requests.get('https://raw.githubusercontent.com/rverton/webanalyze/master/technologies.json')
                     obj = lastest_technologies_file.json()
                     _technologies_file = pathlib.Path(cls._find_files(
                         ['HOME', 'APPDATA',],
