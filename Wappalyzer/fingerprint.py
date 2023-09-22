@@ -83,25 +83,25 @@ class Fingerprint:
         self.cpe: Optional[str] = attrs.get('cpe') # type:ignore
         self.saas: Optional[bool] = attrs.get('saas') # type:ignore
         self.oss: Optional[bool] = attrs.get('oss') # type:ignore
-        self.pricing: List[str] = self._prepare_list(attrs['princing']) if 'princing' in attrs else []
+        self.pricing: List[str] = self._prepare_list(attrs['princing']) if 'princing' in attrs and attrs['princing'] else []
 
         # Implies and cie
-        self.implies: List[str] = self._prepare_list(attrs['implies']) if 'implies' in attrs else []
+        self.implies: List[str] = self._prepare_list(attrs['implies']) if 'implies' in attrs and attrs["implies"] else []
         # self.requires: List[str] = self._prepare_list(attrs['requires']) if 'requires' in attrs else [] # Not supported
         # self.requiresCategory: List[str] = self._prepare_list(attrs['requiresCategory']) if 'requiresCategory' in attrs else [] # Not supported
         # self.excludes: List[str] = self._prepare_list(attrs['excludes']) if 'excludes' in attrs else [] # Not supported
 
         # Patterns
-        self.dom: List[DomSelector] = self._prepare_dom(attrs['dom']) if 'dom' in attrs else []
+        self.dom: List[DomSelector] = self._prepare_dom(attrs['dom']) if 'dom' in attrs and attrs["dom"] else []
         
-        self.headers: Mapping[str, List[Pattern]] = self._prepare_headers(attrs['headers']) if 'headers' in attrs else {}
-        self.meta: Mapping[str, List[Pattern]] = self._prepare_meta(attrs['meta']) if 'meta' in attrs else {}
+        self.headers: Mapping[str, List[Pattern]] = self._prepare_headers(attrs['headers']) if 'headers' in attrs and attrs["headers"] else {}
+        self.meta: Mapping[str, List[Pattern]] = self._prepare_meta(attrs['meta']) if 'meta' in attrs and attrs["meta"] else {}
 
-        self.html: List[Pattern] = self._prepare_pattern(attrs['html']) if 'html' in attrs else []
-        self.text: List[Pattern] = self._prepare_pattern(attrs['text']) if 'text' in attrs else []
-        self.url: List[Pattern] = self._prepare_pattern(attrs['url']) if 'url' in attrs else []
-        self.scriptSrc: List[Pattern] = self._prepare_pattern(attrs['scriptSrc']) if 'scriptSrc' in attrs else []
-        self.scripts: List[Pattern] = self._prepare_pattern(attrs['scripts']) if 'scripts' in attrs else []
+        self.html: List[Pattern] = self._prepare_pattern(attrs['html']) if 'html' in attrs and attrs["html"] else []
+        self.text: List[Pattern] = self._prepare_pattern(attrs['text']) if 'text' in attrs and attrs["text"] else []
+        self.url: List[Pattern] = self._prepare_pattern(attrs['url']) if 'url' in attrs and attrs["url"] else []
+        self.scriptSrc: List[Pattern] = self._prepare_pattern(attrs['scriptSrc']) if 'scriptSrc' in attrs and attrs and attrs["scriptSrc"] else []
+        self.scripts: List[Pattern] = self._prepare_pattern(attrs['scripts']) if 'scripts' in attrs and attrs["scripts"] else []
 
         # self.cookies: Mapping[str, List[Pattern]] Not supported
         # self.dns: Mapping[str, List[Pattern]] Not supported
